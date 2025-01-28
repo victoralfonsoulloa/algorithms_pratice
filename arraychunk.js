@@ -3,18 +3,35 @@
 // ex. chunk [(1, 2, 3, 4, 5, 6, 7, 8) 3] ====> [[1,2,3], [4,5,6], [7,8]]
 
 
-function chunk(arr, num) {
-    const newArr = [];
-    let currentIndex = 0;
+// function chunk(arr, num) {
+//     const newArr = [];
+//     let currentIndex = 0;
 
-    for (let i = num; currentIndex < arr.length; i += num) { // Use '<' instead of '<='
-        console.log(i);
-        let chunk = arr.slice(currentIndex, i);
-        newArr.push(chunk);
-        currentIndex = i; // Update currentIndex
+//     for (let i = num; currentIndex < arr.length; i += num) { // Use '<' instead of '<='
+//         console.log(i);
+//         let chunk = arr.slice(currentIndex, i);
+//         newArr.push(chunk);
+//         currentIndex = i; // Update currentIndex
+//     }
+
+//     return newArr;
+// }
+
+// console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3));
+
+
+// Another Approach
+
+const chunk = (array, size) => {
+    const chunked = [];
+    let index = 0; 
+
+    while (index < array.length) {
+        let chunk = array.slice(index, index + size);
+        index += size;
+        chunked.push(chunk);
     }
-
-    return newArr;
+    return chunked;
 }
 
-console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3));
+console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3))
